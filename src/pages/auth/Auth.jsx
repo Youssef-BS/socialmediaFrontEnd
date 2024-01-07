@@ -1,15 +1,17 @@
 import {useState} from 'react';
-import "./login.css";
+import "./auth.css";
 
-const Login = () => {
- 
+const Auth = () => {
+
+const [username , setUserName] = useState('');
 const [email , setEmail] = useState('');
 const [password , setPassword] = useState('');
 const [error , setError] = useState('');
+const [register , setRegister] = useState(false);
 
 
 
-const login = ()=>{
+const login =()=>{
   if(email === "" || password === ""){
    setError("Please enter your email address and password") ; 
   }else {
@@ -17,6 +19,9 @@ const login = ()=>{
   }
 }
 
+const registerMod=()=>{
+  setRegister(!register);
+}
 
     return (
       <>
@@ -25,12 +30,28 @@ const login = ()=>{
         <img src='https://i.pinimg.com/736x/0c/9b/89/0c9b89b62ba04b4b4740f4ce2da28b54.jpg' alt="Login" className='w-full h-full rounded-l' />
         </div>   
         <div className='flex flex-col box-border  w-1/2 p-4 bg-blue-300  text-center items-center h-full rounded-r'>
+          {
+            register ? 
+            <>
+            <h3 className='text-3xl font-semibold text-blue-700 '>Register</h3>
+            <input type="text" name="username" onChange={(e)=> setUserName(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your username' />
+            <input type="text" name="email" onChange={(e)=> setEmail(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your email adress' />
+            <input type="password" name="password" onChange={(e)=> setPassword(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your password'/>
+            <input type='button' value='Register' className='mt-8 bg-blue-500 p-3 w-32 cursor-pointer rounded' />
+            <p className='text-blue-900 '>{error}</p>
+            <p className='text-blue-700 mt-8 cursor-pointer font-semibold underline' onClick={registerMod}>Login Here if you have an account !</p>
+            </> : (
+              <>
           <h3 className='text-3xl font-semibold text-blue-700 '>Login</h3>
           <input type="text" name="email" onChange={(e)=> setEmail(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your email adress' />
           <input type="password" name="password" onChange={(e)=> setPassword(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your password'/>
           <input type='button' value='Login' onClick={login} className='mt-8 bg-blue-500 p-3 w-32 cursor-pointer rounded' />
           <p className='text-blue-900 '>{error}</p>
-          <p className='text-blue-700 mt-8 cursor-pointer font-semibold underline'>Register Here if don't have an account !</p>
+          <p className='text-blue-700 mt-8 cursor-pointer font-semibold underline' onClick={registerMod}>Register Here if don't have an account !</p>
+          </>
+            )
+          }
+          
         </div>
         
         </div>
@@ -38,4 +59,4 @@ const login = ()=>{
     );
   };
   
-  export default Login;
+  export default Auth;
