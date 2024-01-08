@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import "./auth.css";
+import axios from "axios";
 
 const Auth = () => {
 
@@ -7,17 +8,40 @@ const [username , setUserName] = useState('');
 const [email , setEmail] = useState('');
 const [password , setPassword] = useState('');
 const [error , setError] = useState('');
+const [success , setSuccess] = useState('');
 const [register , setRegister] = useState(false);
 
+console.log(username , email , password );
+
+const Url = "http://localhost:4000/api/users/";
 
 
-const login =()=>{
-  if(email === "" || password === ""){
-   setError("Please enter your email address and password") ; 
-  }else {
-    console.log(email, password);
-  }
+const registerUser = async ()=>{
+ 
+    try {
+   await axios.post(Url+"/register",{
+      username: username,
+      email: email,
+      password: password
+    })
+setSuccess("Register successfully");
+setEmail('');
+setPassword('');
+setUserName('');
+  }catch(error){
+  console.log(error.message);
 }
+  
+}
+
+
+
+
+const login = () =>{
+
+}
+
+
 
 const registerMod=()=>{
   setRegister(!register);
@@ -34,11 +58,11 @@ const registerMod=()=>{
             register ? 
             <>
             <h3 className='text-3xl font-semibold text-blue-700 '>Register</h3>
-            <input type="text" name="username" onChange={(e)=> setUserName(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your username' />
-            <input type="text" name="email" onChange={(e)=> setEmail(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your email adress' />
-            <input type="password" name="password" onChange={(e)=> setPassword(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your password'/>
-            <input type='button' value='Register' className='mt-8 bg-blue-500 p-3 w-32 cursor-pointer rounded' />
-            <p className='text-blue-900 '>{error}</p>
+            <input type="text" name="username" value={username} onChange={(e)=> setUserName(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your username' />
+            <input type="text" name="email"value={email} onChange={(e)=> setEmail(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your email adress'  />
+            <input type="password" name="password" value={password} onChange={(e)=> setPassword(e.target.value)} className='w-56 h-9 mt-8  placeholder:text-center' placeholder='Enter your password' />
+            <input type='button' value='Register' className='mt-8 bg-blue-500 p-3 w-32 cursor-pointer rounded' onClick={registerUser} />
+            {success}
             <p className='text-blue-700 mt-8 cursor-pointer font-semibold underline' onClick={registerMod}>Login Here if you have an account !</p>
             </> : (
               <>
