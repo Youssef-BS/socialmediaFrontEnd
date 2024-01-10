@@ -1,9 +1,12 @@
 import {useState} from 'react';
 import "./auth.css";
 import axios from "axios";
+import { loginRequest, loginSuccess, loginFailure } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 const Auth = () => {
 
+const dispatch = useDispatch();
 const [username , setUserName] = useState('');
 const [email , setEmail] = useState('');
 const [password , setPassword] = useState('');
@@ -36,10 +39,29 @@ setUserName('');
 
 
 
+const login = async () => {
+  dispatch(loginRequest()); 
 
-const login = () =>{
+  try {
+    const response = await axios.post(Url + '/login', {
+      email: email,
+      password: password,
+    });
 
-}
+    console.log(response.data);
+
+    if (response.status === 200) {
+      dispatch(loginSuccess(response.data.userData)); 
+      setSuccess('Login successful');
+    } else {
+      dispatch(loginFailure(response.data.error)); 
+      setError(response.data.error);
+    }
+  } catch (error) {
+    dispatch(loginFailure('An error occurred')); 
+    setError('An error occurred');
+  }
+};
 
 
 
