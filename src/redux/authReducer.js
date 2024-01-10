@@ -1,5 +1,5 @@
 // authReducer.js
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes';
+import { LOGOUT , LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes';
 
 const initialState = {
   user: null,
@@ -28,6 +28,12 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+      case LOGOUT:
+        localStorage.removeItem('userToken')
+        return {
+          ...state,
+          user: null,
+        };
     default:
       return state;
   }

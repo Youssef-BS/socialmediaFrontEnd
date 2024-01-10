@@ -1,8 +1,10 @@
 import {useState} from 'react';
 import "./auth.css";
 import axios from "axios";
-import { loginRequest, loginSuccess, loginFailure } from '../../redux/actions';
+import { loginRequest, loginSuccess, loginFailure , logoutRequest } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import { LOGOUT } from '../../redux/actionTypes';
+
 
 const Auth = () => {
 
@@ -53,6 +55,7 @@ const login = async () => {
     if (response.status === 200) {
       dispatch(loginSuccess(response.data.userData)); 
       setSuccess('Login successful');
+      localStorage.setItem('userToken',response.data.token)
     } else {
       dispatch(loginFailure(response.data.error)); 
       setError(response.data.error);
@@ -61,6 +64,10 @@ const login = async () => {
     dispatch(loginFailure('An error occurred')); 
     setError('An error occurred');
   }
+};
+
+const handleLogout = () => {
+  dispatch(logoutRequest()); 
 };
 
 
@@ -98,6 +105,7 @@ const registerMod=()=>{
             )
           }
           
+          <input type='button' value='logout' onClick={handleLogout} className='mt-8 bg-blue-500 p-3 w-32 cursor-pointer rounded' />
         </div>
         
         </div>
