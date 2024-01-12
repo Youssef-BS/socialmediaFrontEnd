@@ -29,7 +29,7 @@ const authReducer = (state = initialState, action) => {
         error: action.payload,
       };
       case LOGOUT:
-        localStorage.removeItem('userToken')
+        localStorage.setItem('user',null)
         return {
           ...state,
           user: null,

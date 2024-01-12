@@ -55,7 +55,7 @@ const login = async () => {
     if (response.status === 200) {
       dispatch(loginSuccess(response.data.userData)); 
       setSuccess('Login successful');
-      localStorage.setItem('userToken',response.data.token)
+      localStorage.setItem('user',JSON.stringify(response.data.userConnect));
     } else {
       dispatch(loginFailure(response.data.error)); 
       setError(response.data.error);
