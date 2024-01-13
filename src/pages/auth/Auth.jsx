@@ -62,7 +62,7 @@ const registerMod=()=>{
 
     return (
       <>
-      <div className='flex flex-row h-96 w-3/5 text-center mt-44 m-auto justify-center items-center shadow-lg shadow-black-500/40'>
+      <div className='flex flex-row h-96 w-3/5 text-center mt-20 m-auto justify-center items-center shadow-lg shadow-black-500/40'>
         <div className='w-1/2 h-full '>
         <img src='https://i.pinimg.com/736x/0c/9b/89/0c9b89b62ba04b4b4740f4ce2da28b54.jpg' alt="Login" className='w-full h-full rounded-l' />
         </div>   
