@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-d
 import Auth from "./pages/auth/Auth";
 import Home from "./pages/home/Home";
 import { createRoot } from "react-dom/client";
+import Navbar from "./components/Navbar";
 
 function App() {
   // const navigate = useNavigate();
@@ -14,22 +15,10 @@ function App() {
   // })
   
   return (
-    <RouterProvider router={createBrowserRouter([
-      {
-        path: "/",
-        element: <Auth />,
-      },
-      {
-        path: "/home",
-        element: <Home />,
-      },
-
-    ])}>
-      <div className="App">
-        <Route path="/" element={<Auth />} />
-        <Route path="/home" element={<Home />} />
-      </div>
-    </RouterProvider>
+  <>
+  <Navbar />
+  <Auth />
+  </>
   );
 }
 
