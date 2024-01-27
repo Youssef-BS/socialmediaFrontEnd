@@ -1,4 +1,20 @@
-.navbar > p{
+.navbar p{
 margin-left: 35px !important;
 font-size: 22px;
+color: black;
+transition: .3s;
+text-align: center;
+}
+
+span{
+       display: none;
+    transition: display 0.5s ease;
+}
+
+.navbar p:hover span    {
+    display:block;
+}
+
+.navbar p:hover{
+color: rgb(29 , 78 ,216);
 }

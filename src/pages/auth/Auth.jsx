@@ -45,6 +45,9 @@ const login = async (e) => {
   e.preventDefault();
   dispatch({ type: "LOGIN_START" });
   try {
+  if(email === ""){
+   console.log("error")
+  }
     const res = await axios.post(Url+"/login", {
     email : email ,
     password : password
