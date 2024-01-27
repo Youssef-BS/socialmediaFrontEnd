@@ -1,16 +1,19 @@
-import React , {useContext} from 'react'
+import React  from 'react'
 import "./navbar.css"
-import { AuthContext } from '../context/AuthContext';
 import HomeIcon from '@mui/icons-material/Home';
 import EmailIcon from '@mui/icons-material/Email';
 import PeopleIcon from '@mui/icons-material/People';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
- const {dispatch} = useContext(AuthContext);
  
- const Logout = ()=>{
+const navigate = useNavigate();
+
+const Logout =async (e)=>{
+e.preventDefault();
+localStorage.setItem('user',null);
+window.location.reload(false);
 
  }
     return (
@@ -28,7 +31,7 @@ const Navbar = () => {
     <p>
     <PeopleIcon /><br />
       Friends</p>
-    <p><MenuIcon /><br />
+    <p onClick={Logout}><MenuIcon /><br />
     Menu
     </p>
     </div>
