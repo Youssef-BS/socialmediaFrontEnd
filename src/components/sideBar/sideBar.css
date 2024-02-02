@@ -1,5 +1,14 @@
-.sidebar {
-    height: 500px;
-    position: fixed;
-    left: 1%;
+.sidebar{
+    height: 100%;
+}
+
+.sidebar .list div{
+margin-top: 16px;
+align-items: center;
+display: flex;
+margin-top: 18px;
+}
+
+.sidebar .list div p{
+    margin-left: 12px;
 }
