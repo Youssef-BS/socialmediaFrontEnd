@@ -1,11 +1,9 @@
-import React, { useEffect , useContext } from "react";
+import React, {  useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from "./context/AuthContext";
 
 import Auth from "./pages/auth/Auth";
 import Home from "./pages/home/Home";
-import { createRoot } from "react-dom/client";
-import Navbar from "./components/Navbar";
 
 function App() {
   const {user} = useContext(AuthContext);

@@ -1,3 +1,6 @@
+.nabvbar {
+    position: fixed;
+}
 .navbar p{
 margin-left: 35px !important;
 font-size: 22px;
