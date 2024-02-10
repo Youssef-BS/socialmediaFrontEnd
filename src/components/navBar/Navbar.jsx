@@ -36,7 +36,7 @@ window.location.reload(false);
     <SportsEsportsIcon /><br />
       Games</p>
     </div>
-    <div className='profile'>
+    <div className='profile cursor-pointer'>
     <p onClick={Logout}><MenuIcon /><br />
     Menu
     </p>
