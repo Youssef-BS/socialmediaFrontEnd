@@ -1,0 +1,19 @@
+.post{
+    background-color: rgb(183, 214, 252);
+}
+
+.communication div{
+    margin: 12px;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 50px;
+    width: 300px;
+    text-align: center;
+    transition: 0.7s;
+    font-weight: bold;
+    background-color:rgb(149, 196, 254);
+}
+
+.communication div:hover{
+    background-color: rgb(106, 173, 255);
+}

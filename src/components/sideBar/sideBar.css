@@ -1,18 +1,22 @@
 .sidebar{
-    height: 100%;
+    height: calc(100% - 81px);
+    position: fixed;
+    left : 0 ;
+    top:81px;
 }
 
 .sidebar .list div{
-margin-top: 16px;
+margin-top: 20px;
 align-items: center;
 display: flex;
-margin-top: 18px;
+margin-top: 24px;
 cursor: pointer;
 transition : 0.5s;
 }
 
 .sidebar .list div p{
     margin-left: 12px;
+    font-size: 24px;
 }
 
 .sidebar .list div:hover{

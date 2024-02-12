@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
     <Navbar />
-    <div className='container flex m-auto justify-between mt-5'>
+    <div className='container flex m-auto justify-between '>
     <SideBar />
     <Container />
     <ContactBar />
